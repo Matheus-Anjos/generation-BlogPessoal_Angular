@@ -26,16 +26,16 @@ export class TemaService {
   }
 
   postTema( tema : Tema): Observable<Tema> {
-    return this.http.post<Tema>('http://localhost:8080/temas', tema, this.token)
+    return this.http.post<Tema>('http://localhost:8080/temas/salvar', tema, this.token)
 
   }
 
   putTema(tema : Tema): Observable<Tema> {
-    return this.http.put<Tema>('http://localhost:8080/temas', tema, this.token)
+    return this.http.put<Tema>('http://localhost:8080/temas/atualizar', tema, this.token)
   }
 
   deleteTema( id : number) {
-    return this.http.delete(`http://localhost:8080/temas/${id}`, this.token )
+    return this.http.delete(`http://localhost:8080/temas/deletar/${id}`, this.token )
   }
 
 }
