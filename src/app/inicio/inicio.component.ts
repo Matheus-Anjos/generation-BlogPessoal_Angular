@@ -40,6 +40,10 @@ export class InicioComponent implements OnInit {
     if(environment.token == ''){
       alert('sua sessão expirou faça login novamente')
       this.router.navigate(['/entrar'])
+
+      this.authService.refreshToken()
+      this.getAllPostagens()
+      this.getAllTemas()
     }
 
     this.getAllTemas()
