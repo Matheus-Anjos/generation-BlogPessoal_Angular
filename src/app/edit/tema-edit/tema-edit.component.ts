@@ -25,11 +25,12 @@ export class TemaEditComponent implements OnInit {
     }
 
     let id = this.route.snapshot.params['id']
+    this.findByIdTema(id)
   }
 
   findByIdTema(id : number){
 
-    this.temaService.getByidTema(id).subscribe((resp : Tema)=> {
+    this.temaService.getByIdTema(id).subscribe((resp : Tema)=> {
 
       this.tema = resp
     })
@@ -45,3 +46,9 @@ export class TemaEditComponent implements OnInit {
   }
 
 }
+
+
+
+
+
+

@@ -40,13 +40,11 @@ export class InicioComponent implements OnInit {
     if(environment.token == ''){
       alert('sua sessão expirou faça login novamente')
       this.router.navigate(['/entrar'])
-
-      this.authService.refreshToken()
-      this.getAllPostagens()
-      this.getAllTemas()
     }
-
+    this.authService.refreshToken()
+    this.getAllPostagens()
     this.getAllTemas()
+    
   }
 
   getAllTemas() {
@@ -56,7 +54,7 @@ export class InicioComponent implements OnInit {
   }
 
   findByIdTema(){
-    this.temaService.getByidTema(this.idTema).subscribe((resp : Tema)=>{
+    this.temaService.getByIdTema(this.idTema).subscribe((resp : Tema)=>{
     this.tema = resp
     });
   }
@@ -73,9 +71,7 @@ export class InicioComponent implements OnInit {
     this.authService.getByIdUser(this.idUsuario).subscribe((resp : Usuario) => {
     this.usuario = resp
 
-    })
-
-
+    });
   }
 
   publicar(){
@@ -91,6 +87,7 @@ export class InicioComponent implements OnInit {
       alert('Postagem Realizada com Sucesso!!!')
       this.postagem = new Postagem()
       this.getAllPostagens()
+      this.getAllTemas()
     })
 
   }

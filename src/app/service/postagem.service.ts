@@ -18,6 +18,10 @@ export class PostagemService {
     headers: new HttpHeaders().set('Authorization', environment.token)
   }
 
+   getByIdPostagem(id: number): Observable<Postagem> {
+  return this.http.get<Postagem>(`http://localhost:8080/postagens/${id}`, this.token) }
+
+
   getAllPostagens(): Observable<Postagem[]>{
     return this.http.get<Postagem[]>('http://localhost:8080/postagens', this.token)
   }
@@ -27,9 +31,12 @@ export class PostagemService {
 
   }
 
+  putPostagem( postagem: Postagem): Observable<Postagem> {
+    return this.http.put<Postagem>('http://localhost:8080/postagens/atualizar', postagem, this.token)
 
+  }
 
-
-
+  deletePostagem( id : number) {
+ return this.http.delete(`http://localhost:8080/postagens/deletar/${id}`, this.token )}
 
 }
